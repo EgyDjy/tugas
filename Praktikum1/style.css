@@ -1,0 +1,30 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.wrapper {
+    margin: 40px auto;
+    width: 95%;
+}
+img {
+    float: left;
+}
+.text-box {
+    color: black;
+}
+.text-box p {
+    font-size: 30px;
+    margin-left: 20%;
+}
+
+.wrapper2 {
+    margin: 40px auto;
+    width: 95%;
+}
+.text-box2 {
+    color: black;
+}
+.text-box2 p {
+    font-size: 30px;
+    margin-right: 20%;
+}
