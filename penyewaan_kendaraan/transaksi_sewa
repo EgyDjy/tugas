@@ -1,0 +1,106 @@
+const express = require("express")
+const router = express.Router()
+const db = require("./koneksi")
+
+router.get("/", (req, res) => {
+    let sql = "select * from transaksi_sewa"
+
+    db.query(sql, (error, result) => {
+        let nilai = null
+        if (error) {
+            nilai = {
+                message: "Lu gagal!"
+            }
+        } else {
+            nilai = {
+                data: result
+            }
+        }
+        res.json(nilai)
+    })
+})
+
+router.post("/", (req, res) => {
+    let nilai = {
+        id_transaksi_sewa: req.body.id_transaksi_sewa,
+        NIK_pemilik: req.body.NIK_pemilik,
+        NIK_penyewa: req.body.NIK_penyewa,
+        waktu_sewa: req.body.waktu_sewa
+    }
+    let sql = "insert into transaksi_sewa set ?"
+
+    db.query(sql, nilai, (error, result) => {
+        let nilai = null
+        if (error) {
+            nilai = {
+                message: "gagal"
+            }
+        } else {
+            nilai = {
+                message: result.affectedRows + " berhasil input",
+                id_transaksi_sewa: data.id_transaksi_sewa,
+                NIK_pemilik: data.NIK_pemilik,
+                NIK_penyewa: data.NIK_penyewa,
+                waktu_sewa: data.waktu_sewa
+            }
+        }
+
+    })
+    res.json(nilai)
+})
+
+router.put("/", (req, res) => {
+    let data = {
+        NIK_pemilik: req.body.NIK_pemilik,
+        NIK_penyewa: req.body.NIK_penyewa,
+        waktu_sewa: req.body.waktu_sewa
+    }
+
+    let parameter = {
+        id_transaksi_sewa: req.body.id_transaksi_sewa
+    }
+
+    let sql = "UPDATE transaksi_sewa SET ? WHERE ?";
+
+    db.query(sql, [data, parameter], (error, result) => {
+        let nilai = null;
+        if (error) {
+            nilai = {
+                message: "Gagal."
+            };
+        } else {
+            nilai = {
+                message: "Berhasil mengupdate data ",
+                NIK_pemilik: data.NIK_pemilik,
+                NIK_penyewa: data.NIK_penyewa,
+                waktu_sewa: data.waktu_sewa
+            }
+        }
+        res.json(nilai)
+    })
+})
+
+router.delete("/:id_transaksi_sewa", (req, res) => {
+    let nilai = {
+        id_transaksi_sewa: req.params.id_transaksi_sewa
+    }
+
+    let sql = "delete from transaksi_sewa where ?"
+
+    db.query(sql, nilai, (error, result) => {
+        let nilai = null
+        if (error) {
+            nilai = {
+                message: "Gagal."
+            }
+
+        } else {
+            nilai = {
+                message: result.affectedRows + " data terhapus"
+            }
+        }
+        res.json(nilai)
+    })
+})
+
+module.exports=router
