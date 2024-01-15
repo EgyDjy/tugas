@@ -1,0 +1,32 @@
+import React, {Component} from "react";
+import './App.css';
+
+class App extends Component {
+  render(){
+    return (
+      <div className="App container col-sm-6">
+        {/* <div className="container-fluid py-4 text-center">
+          <h1>Pancasila</h1>
+        </div> */}
+        <div className="container-fluid py-3 btn btn-danger">
+          <h4>Button Merah</h4>
+        </div>
+        <div className="container-fluid py-3 btn btn-warning">
+          <h4>Button Kuning</h4>
+        </div>
+        <div className="container-fluid py-3 btn btn-success">
+          <h4>Button Hijau</h4>
+        </div>
+        <div className="container-fluid py-3 btn btn-light">
+          <h4>Button putih</h4>
+        </div>
+        <div className="container-fluid py-3 btn btn-dark">
+          <h4>Button Black</h4>
+        </div>
+
+      </div>
+    );
+  }
+}
+
+export default App;
