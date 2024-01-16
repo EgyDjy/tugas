@@ -1,0 +1,104 @@
+App.js
+
+import React, {Component} from "react";
+import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import OsisForm from './OsisForm';
+
+
+class App extends Component {
+  render(){
+    return (
+      <div className="container mt-5">
+        <div className="bg-warning">
+          <h1>Formulir Pendaftaran OSIS</h1>
+        </div>
+      <OsisForm />
+    </div>
+
+    );
+  }
+}
+
+export default App;
+
+OsisForm.js
+
+
+import React, { useState } from 'react';
+import { Form, Button } from 'react-bootstrap';
+
+const OsisForm = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    gender: '',
+    address: '',
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData);
+  };
+
+  return (
+    <Form onSubmit={handleSubmit}>
+      <Form.Group controlId="formName">
+        <Form.Control
+          type="text"
+          placeholder="Masukkan nama"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          required
+        />
+      </Form.Group>
+
+      <Form.Group controlId="formGender">
+        <Form.Label>Jenis Kelamin</Form.Label>
+        <Form.Check
+          type="radio"
+          label="Laki-laki"
+          name="gender"
+          value="laki-laki"
+          checked={formData.gender === 'laki-laki'}
+          onChange={handleChange}
+          required
+        />
+        <Form.Check
+          type="radio"
+          label="Perempuan"
+          name="gender"
+          value="perempuan"
+          checked={formData.gender === 'perempuan'}
+          onChange={handleChange}
+          required
+        />
+      </Form.Group>
+
+      <Form.Group controlId="formAddress">
+        <Form.Control
+          as="textarea"
+          rows={3}
+          placeholder="Masukkan alamat"
+          name="address"
+          value={formData.address}
+          onChange={handleChange}
+          required
+        />
+      </Form.Group>
+        <br/>
+      <Button variant="primary" type="submit">
+        Submit
+      </Button>
+    </Form>
+  );
+};
+
+export default OsisForm;
