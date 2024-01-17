@@ -1,0 +1,27 @@
+import React, {Component} from "react";
+import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import Media from "./Component/Media";
+// import OsisForm from './OsisForm';
+// import LandingPage from "./Component/LandingPage";
+
+class App extends Component {
+  render () {
+    return (
+      <div className="container">
+            <h1>Pancasila</h1>
+            <Media image="sila1.png" title="1. Ketuhanan Yang Maha Esa"></Media>
+
+            <Media image="sila2.png" title="2. Kemanusiaan yang adil dan beradab"></Media>
+
+            <Media image="sila3.png" title="3. Persatuan Indonesia"></Media>
+
+            <Media image="sila4.png" title="4. Kerakyatanyang dipimpin oleh hikmat kebijaksanaan dalam permusyawaratan perwakilan"></Media>
+
+            <Media image="sila5.png" title="5. Keadilan sosial bagi seluruh rakyat Indonesia"></Media>
+</div>
+    )
+  }
+}
+
+export default App;
